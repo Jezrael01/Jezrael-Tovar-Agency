@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Campaña Social Ads – Boutique Urbana | Jezrael Tovar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos específicos para impresión (PDF) */
+    @media print {
+      header, footer, .no-print { display: none !important; }
+      body { background: #fff; color: #111; }
+      .pdf-container { box-shadow: none; background: #fff; }
+    }
+    .pdf-cover {
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .meta-pill { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600; background:rgba(0,0,0,0.05); }
+  </style>
+</head>
+<body>
+  <!-- Header mínimo (se oculta al imprimir) -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/80 backdrop-blur-md shadow-lg border-b border-white/10 no-print">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html#hero" class="text-lg font-black tracking-widest text-[var(--text-primary)]">JEZRAEL TOVAR AGENCY</a>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--card-bg)] transition no-print">Tema</button>
+        <a href="index.html#contact" class="px-4 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold no-print">Contactar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-6 py-28">
+    <div class="max-w-4xl mx-auto pdf-container card-style p-8 rounded-2xl">
+      <!-- Portada -->
+      <div class="pdf-cover mb-6" style="background-image: url('SRC/social_media_ads.jpg');"></div>
+
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h1 class="text-3xl font-extrabold text-[var(--text-primary)]">Campaña Social Ads para Marca de Moda</h1>
+          <p class="text-sm text-[var(--text-secondary)] mt-1">Boutique Urbana — Campaña en Meta Ads (4 semanas)</p>
+        </div>
+        <div class="text-right">
+          <div class="meta-pill text-[var(--text-secondary)]">Duración: 4 semanas</div>
+          <div class="mt-2 meta-pill text-[var(--text-secondary)]">Sector: Retail / Moda</div>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-2">Objetivo</h2>
+        <p class="text-[var(--text-secondary)]">Incrementar la visibilidad y las ventas en línea mediante campañas en Meta Ads, optimizando CPA y elevando el ROAS.</p>
+      </section>
+
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-2">Estrategia</h2>
+        <ul class="list-disc ml-5 text-[var(--text-secondary)]">
+          <li>Segmentación precisa por intereses: moda urbana, tendencias y comportamiento de compra.</li>
+          <li>Creatividades dinámicas con storytelling visual y formatos carrusel / video corto.</li>
+          <li>Test A/B continuo para optimizar anuncios, audiencias y landing pages.</li>
+        </ul>
+      </section>
+
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-2">Resultados</h2>
+        <ul class="list-disc ml-5 text-[var(--text-secondary)]">
+          <li><strong>+42%</strong> incremento en conversiones.</li>
+          <li>Reducción del <strong>CPA</strong> en un <strong>28%</strong>.</li>
+          <li>Aumento del engagement orgánico en <strong>36%</strong>.</li>
+        </ul>
+      </section>
+
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-2">Conclusión</h2>
+        <p class="text-[var(--text-secondary)]">Combinamos creatividad y datos para una campaña escalable; los resultados muestran que la optimización continua y los anuncios con storytelling generan mejores métricas de conversión.</p>
+      </section>
+
+      <div class="flex items-center justify-between mt-8">
+        <div class="text-sm text-[var(--text-secondary)]">Jezrael Tovar Agency — Estrategias que convierten clics en clientes.</div>
+        <div class="space-x-3">
+          <button onclick="window.print()" class="px-4 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold no-print">Descargar PDF</button>
+          <a href="portafolio.html" class="px-4 py-2 rounded-full border border-[var(--neon-color)]/20 text-[var(--text-secondary)] no-print">Volver al Portafolio</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[var(--bg-footer)] border-t border-[var(--neon-color)]/20 mt-12 no-print">
+    <div class="container mx-auto px-6 py-6 text-center text-[var(--text-secondary)] text-sm">
+      © 2025 <span class="text-[var(--neon-color)] font-semibold">Jezrael Tovar</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
