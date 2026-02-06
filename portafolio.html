@@ -89,7 +89,7 @@
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Campaña Social Ads – Moda</h3>
         <p class="text-[var(--text-secondary)] mb-4 text-sm">Estrategia en Meta Ads con optimización de CPA. +42% en conversiones.</p>
-        <a href="#" class="text-neon font-semibold hover:underline">Ver Detalles →</a>
+        <a href="proyecto1.html" class="text-neon font-semibold hover:underline">Ver Detalles →</a>
       </div>
     </div>
 
@@ -98,7 +98,7 @@
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Rebranding Completo</h3>
         <p class="text-[var(--text-secondary)] mb-4 text-sm">Identidad visual moderna y diseño de logo para posicionamiento digital.</p>
-        <a href="#" class="text-neon font-semibold hover:underline">Ver Proyecto →</a>
+        <a href="proyecto2.html" class="text-neon font-semibold hover:underline">Ver Proyecto →</a>
       </div>
     </div>
 
@@ -107,14 +107,14 @@
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Landing Page Creativa</h3>
         <p class="text-[var(--text-secondary)] mb-4 text-sm">Diseño enfocado en conversiones con estrategia UX/UI avanzada.</p>
-        <a href="#" class="text-neon font-semibold hover:underline">Ver proyecto →</a>
+        <a href="proyecto3.html" class="text-neon font-semibold hover:underline">Ver proyecto →</a>
       </div>
     </div>
   </div>
 
   <div class="text-center mt-24 px-4 cta-button-container">
     <a href="index.html#contact" class="inline-block w-full max-w-xs md:max-w-md px-8 py-4 rounded-full neon-accent text-[var(--bg-primary)] font-bold text-base md:text-lg cta-button-responsive shadow-2xl transform transition hover:scale-105 active:scale-95">
-     ¿Quieres un proyecto así? <br class="sm:hidden"> Contáctame
+      ¿Quieres un proyecto así? <br class="sm:hidden"> Contáctame
     </a>
   </div>
 </main>
@@ -126,7 +126,7 @@
 </footer>
 
 <script>
-  // Script para manejar el menú móvil y el tema en esta página
+  // --- 1. Lógica del Menú Móvil ---
   const menuBtn = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const navIconPath = document.getElementById('nav-icon-path');
@@ -136,7 +136,6 @@
     navIconPath.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
   });
 
-  // Cerrar menú al clickear link
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
@@ -144,7 +143,41 @@
     });
   });
 
-  // Lógica de Reveal (Scroll)
+  // --- 2. Lógica de Cambio de Tema (MODO CLARO/OSCURO) ---
+  const themeBtn = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+
+  function updateIcons(isDark) {
+    if (isDark) {
+      moonIcon.classList.remove('hidden');
+      sunIcon.classList.add('hidden');
+    } else {
+      moonIcon.classList.add('hidden');
+      sunIcon.classList.remove('hidden');
+    }
+  }
+
+  themeBtn.addEventListener('click', () => {
+    if (htmlElement.classList.contains('dark')) {
+      htmlElement.classList.replace('dark', 'light');
+      localStorage.setItem('theme', 'light');
+      updateIcons(false);
+    } else {
+      htmlElement.classList.replace('light', 'dark');
+      localStorage.setItem('theme', 'dark');
+      updateIcons(true);
+    }
+  });
+
+  // Inicializar tema al cargar
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  htmlElement.classList.remove('dark', 'light');
+  htmlElement.classList.add(savedTheme);
+  updateIcons(savedTheme === 'dark');
+
+  // --- 3. Lógica de Reveal (Scroll) ---
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
