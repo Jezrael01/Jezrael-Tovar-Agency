@@ -184,21 +184,18 @@
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // Inicializar EmailJS
     (function() { emailjs.init("d9YX4yThx--9n3KHl"); })();
 
-    // Lógica del Menú Móvil
+    // 1. Lógica del Menú Móvil
     const menuBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const navIconPath = document.getElementById('nav-icon-path');
 
     menuBtn.addEventListener('click', () => {
       const isHidden = mobileMenu.classList.toggle('hidden');
-      // Cambiar icono de hamburguesa a X
       navIconPath.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
     });
 
-    // Cerrar menú al hacer click en links móviles
     document.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -206,7 +203,27 @@
       });
     });
 
-    // Formulario de Contacto
+    // 2. Lógica de Cambio de Tema (MODIFICADO)
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      document.getElementById('sun-icon').classList.toggle('hidden');
+      document.getElementById('moon-icon').classList.toggle('hidden');
+    });
+
+    // 3. Lógica de Revelación al Scroll (AÑADIDO)
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 4. Formulario de Contacto
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       emailjs.sendForm('service_718w764', 'template_cu8rwxr', this)
