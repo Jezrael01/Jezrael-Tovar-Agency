@@ -203,13 +203,24 @@
       });
     });
 
-    // 2. Lógica de Cambio de Tema (MODIFICADO)
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      document.getElementById('sun-icon').classList.toggle('hidden');
-      document.getElementById('moon-icon').classList.toggle('hidden');
-    });
+   // 2. Lógica de Cambio de Tema (CORREGIDA)
+const themeBtn = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+themeBtn.addEventListener('click', () => {
+    // Si tiene 'dark', lo cambiamos por 'light' y viceversa
+    if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+    } else {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+    }
+
+    // Cambia los iconos
+    document.getElementById('sun-icon').classList.toggle('hidden');
+    document.getElementById('moon-icon').classList.toggle('hidden');
+});
 
     // 3. Lógica de Revelación al Scroll (AÑADIDO)
     const observerOptions = { threshold: 0.1 };
