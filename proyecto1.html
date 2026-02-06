@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Campaña Social Ads – Boutique Urbana | Jezrael Tovar</title>
+  <title>Campaña Social Ads – JT Agency</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -11,7 +11,7 @@
     @media print {
       header, footer, .no-print { display: none !important; }
       body { background: #fff; color: #111; }
-      .pdf-container { box-shadow: none; background: #fff; }
+      .pdf-container { box-shadow: none; background: #fff; border: 1px solid #eee; }
     }
     .pdf-cover {
       height: 260px;
@@ -19,84 +19,139 @@
       background-position: center;
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .meta-pill { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600; background:rgba(0,0,0,0.05); }
+    .meta-pill { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600; background:rgba(var(--text-primary-rgb), 0.05); border: 1px solid rgba(var(--text-primary-rgb), 0.1); }
+    #mobile-menu { transition: all 0.3s ease-in-out; }
   </style>
 </head>
-<body>
-  <!-- Header mínimo (se oculta al imprimir) -->
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
+
   <header class="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/80 backdrop-blur-md shadow-lg border-b border-white/10 no-print">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html#hero" class="text-lg font-black tracking-widest text-[var(--text-primary)]">JEZRAEL TOVAR AGENCY</a>
+      <a href="index.html" class="text-lg font-black tracking-widest text-[var(--text-primary)]">JT AGENCY</a>
+      
       <div class="flex items-center space-x-4">
-        <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--card-bg)] transition no-print">Tema</button>
-        <a href="index.html#contact" class="px-4 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold no-print">Contactar</a>
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--card-bg)] transition">
+            <svg id="sun-icon" class="h-6 w-6 text-yellow-500 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="moon-icon" class="h-6 w-6 text-[var(--neon-color)] block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+        <button id="mobile-menu-button" class="md:hidden p-2 text-[var(--text-primary)]">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="nav-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <a href="index.html#contact" class="hidden sm:inline-block px-4 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold no-print">Contactar</a>
       </div>
     </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[var(--bg-primary)] border-b border-white/10 px-6 py-6 space-y-4 absolute w-full left-0 top-full shadow-2xl">
+        <a href="index.html#about" class="block text-[var(--text-secondary)]">Sobre Mí</a>
+        <a href="portafolio.html" class="block text-neon font-bold">Portafolio</a>
+        <a href="index.html#contact" class="block w-full text-center px-5 py-3 rounded-full neon-accent text-[var(--bg-primary)] font-bold">Contactar</a>
+    </div>
   </header>
 
   <main class="container mx-auto px-6 py-28">
-    <div class="max-w-4xl mx-auto pdf-container card-style p-8 rounded-2xl">
-      <!-- Portada -->
-      <div class="pdf-cover mb-6" style="background-image: url('SRC/social_media_ads.jpg');"></div>
+    <div class="max-w-4xl mx-auto pdf-container card-style p-6 md:p-10 rounded-2xl border border-white/10">
+      
+      <div class="pdf-cover mb-8" style="background-image: url('SRC/social_media_ads.jpg');"></div>
 
-      <div class="flex items-center justify-between mb-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 class="text-3xl font-extrabold text-[var(--text-primary)]">Campaña Social Ads para Marca de Moda</h1>
-          <p class="text-sm text-[var(--text-secondary)] mt-1">Boutique Urbana — Campaña en Meta Ads (4 semanas)</p>
+          <h1 class="text-2xl md:text-4xl font-extrabold text-[var(--text-primary)]">Campaña Social Ads para Moda</h1>
+          <p class="text-base text-[var(--text-secondary)] mt-2">Boutique Urbana — Estrategia Meta Ads</p>
         </div>
-        <div class="text-right">
-          <div class="meta-pill text-[var(--text-secondary)]">Duración: 4 semanas</div>
-          <div class="mt-2 meta-pill text-[var(--text-secondary)]">Sector: Retail / Moda</div>
+        <div class="flex flex-wrap gap-2">
+          <div class="meta-pill text-xs text-[var(--text-secondary)]">Duración: 4 semanas</div>
+          <div class="meta-pill text-xs text-[var(--text-secondary)]">Sector: Moda</div>
         </div>
       </div>
 
-      <!-- Contenido -->
-      <section class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Objetivo</h2>
-        <p class="text-[var(--text-secondary)]">Incrementar la visibilidad y las ventas en línea mediante campañas en Meta Ads, optimizando CPA y elevando el ROAS.</p>
-      </section>
+      <div class="space-y-8">
+          <section>
+            <h2 class="text-xl font-bold mb-3 text-neon">Objetivo</h2>
+            <p class="text-[var(--text-secondary)] leading-relaxed">Incrementar la visibilidad y las ventas en línea mediante campañas en Meta Ads, optimizando CPA y elevando el ROAS.</p>
+          </section>
 
-      <section class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Estrategia</h2>
-        <ul class="list-disc ml-5 text-[var(--text-secondary)]">
-          <li>Segmentación precisa por intereses: moda urbana, tendencias y comportamiento de compra.</li>
-          <li>Creatividades dinámicas con storytelling visual y formatos carrusel / video corto.</li>
-          <li>Test A/B continuo para optimizar anuncios, audiencias y landing pages.</li>
-        </ul>
-      </section>
+          <section>
+            <h2 class="text-xl font-bold mb-3 text-neon">Estrategia</h2>
+            <ul class="list-disc ml-5 space-y-2 text-[var(--text-secondary)]">
+              <li>Segmentación precisa por intereses: moda urbana y tendencias.</li>
+              <li>Creatividades dinámicas con formatos carrusel.</li>
+              <li>Test A/B continuo para optimizar landing pages.</li>
+            </ul>
+          </section>
 
-      <section class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Resultados</h2>
-        <ul class="list-disc ml-5 text-[var(--text-secondary)]">
-          <li><strong>+42%</strong> incremento en conversiones.</li>
-          <li>Reducción del <strong>CPA</strong> en un <strong>28%</strong>.</li>
-          <li>Aumento del engagement orgánico en <strong>36%</strong>.</li>
-        </ul>
-      </section>
+          <section>
+            <h2 class="text-xl font-bold mb-3 text-neon">Resultados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                    <div class="text-2xl font-black text-neon">+42%</div>
+                    <div class="text-xs text-[var(--text-secondary)]">Conversiones</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                    <div class="text-2xl font-black text-neon">-28%</div>
+                    <div class="text-xs text-[var(--text-secondary)]">CPA</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                    <div class="text-2xl font-black text-neon">+36%</div>
+                    <div class="text-xs text-[var(--text-secondary)]">Engagement</div>
+                </div>
+            </div>
+          </section>
+      </div>
 
-      <section class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Conclusión</h2>
-        <p class="text-[var(--text-secondary)]">Combinamos creatividad y datos para una campaña escalable; los resultados muestran que la optimización continua y los anuncios con storytelling generan mejores métricas de conversión.</p>
-      </section>
-
-      <div class="flex items-center justify-between mt-8">
-        <div class="text-sm text-[var(--text-secondary)]">Jezrael Tovar Agency — Estrategias que convierten clics en clientes.</div>
-        <div class="space-x-3">
-          <button onclick="window.print()" class="px-4 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold no-print">Descargar PDF</button>
-          <a href="portafolio.html" class="px-4 py-2 rounded-full border border-[var(--neon-color)]/20 text-[var(--text-secondary)] no-print">Volver al Portafolio</a>
+      <div class="flex flex-col sm:flex-row items-center justify-between mt-12 pt-8 border-t border-white/5 gap-6">
+        <div class="text-xs text-[var(--text-secondary)] text-center sm:text-left italic">JT Agency — Estrategias que convierten.</div>
+        <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-3">
+          <button onclick="window.print()" class="w-full sm:w-auto px-6 py-3 rounded-full neon-accent text-[var(--bg-primary)] font-bold no-print text-center">Descargar PDF</button>
+          <a href="portafolio.html" class="w-full sm:w-auto px-6 py-3 rounded-full border border-white/10 text-[var(--text-secondary)] no-print text-center hover:bg-white/5 transition">Volver</a>
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="bg-[var(--bg-footer)] border-t border-[var(--neon-color)]/20 mt-12 no-print">
-    <div class="container mx-auto px-6 py-6 text-center text-[var(--text-secondary)] text-sm">
-      © 2025 <span class="text-[var(--neon-color)] font-semibold">Jezrael Tovar</span>
+  <footer class="bg-[var(--bg-footer)] border-t border-white/10 py-8 no-print">
+    <div class="container mx-auto px-6 text-center text-[var(--text-secondary)] text-sm">
+      © 2026 <span class="text-neon font-semibold">Jezrael Tovar Agency</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Lógica de Tema
+    const themeBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const sun = document.getElementById('sun-icon');
+    const moon = document.getElementById('moon-icon');
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark');
+      html.classList.toggle('light', !isDark);
+      sun.classList.toggle('hidden', isDark);
+      moon.classList.toggle('hidden', !isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Menú móvil
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const path = document.getElementById('nav-icon-path');
+
+    menuBtn.addEventListener('click', () => {
+      const isHidden = menu.classList.toggle('hidden');
+      path.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+    });
+
+    // Cargar tema guardado
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.classList.add(saved);
+    if(saved === 'light') {
+        html.classList.remove('dark');
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
