@@ -27,9 +27,13 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// Inicializar tema al cargar
+// --- Inicializar tema al cargar (CORREGIDO) ---
 const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Eliminamos ambas para evitar duplicados y luego ponemos la correcta
+htmlElement.classList.remove('dark', 'light'); 
 htmlElement.classList.add(savedTheme);
+
 updateIcons(savedTheme === 'dark');
 
 // --- Lógica del Menú Móvil (NUEVO) ---
