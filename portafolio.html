@@ -6,22 +6,40 @@
   <title>Portafolio | Jezrael Tovar Agency</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Corrección específica para evitar cortes en el botón y asegurar responsive */
+    #mobile-menu {
+      transition: all 0.3s ease-in-out;
+    }
+    .cta-button-container {
+      overflow: visible !important;
+    }
+    /* Estilo preventivo para que el texto largo no rompa el botón */
+    .cta-button-responsive {
+      white-space: normal;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 4rem;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
 
-<!-- Header -->
 <header class="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/80 backdrop-blur-md shadow-lg border-b border-white/10">
   <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
     <a href="index.html#hero" class="flex items-center space-x-2 text-xl font-black tracking-widest text-[var(--text-primary)]">
-      <img src="SRC/logo nuevo jezrael_isotipo_original.png" alt="Logo Jezrael Tovar" class="h-8 w-auto block dark:hidden">
-      <span>JEZRAEL TOVAR AGENCY</span>
+      <img src="SRC/logo nuevo jezrael_isotipo_original.png" alt="Logo" class="h-8 w-auto">
+      <span class="hidden sm:block">JT AGENCY</span>
     </a>
+    
     <div class="space-x-8 hidden md:flex text-[var(--text-secondary)]">
       <a href="index.html#about" class="hover:text-neon transition">Sobre Mí</a>
       <a href="index.html#services" class="hover:text-neon transition">Servicios</a>
-      <a href="portafolio.html" class="hover:text-neon text-neon font-semibold transition">Portafolio</a>
+      <a href="portafolio.html" class="text-neon font-semibold transition">Portafolio</a>
       <a href="index.html#funnel" class="hover:text-neon transition">Metodología</a>
     </div>
+
     <div class="flex items-center space-x-4">
       <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--card-bg)] transition">
         <svg id="sun-icon" class="h-6 w-6 text-yellow-500 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,93 +49,112 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
         </svg>
       </button>
-      <a href="index.html#contact" class="px-5 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold cta-button">Agenda Sesión</a>
+
+      <button id="mobile-menu-button" class="md:hidden p-2 text-[var(--text-primary)]">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="nav-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <a href="index.html#contact" class="hidden sm:inline-block px-5 py-2 rounded-full neon-accent text-[var(--bg-primary)] font-semibold cta-button">Agenda Sesión</a>
     </div>
   </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-[var(--bg-primary)] border-b border-white/10 px-6 py-6 space-y-4 absolute w-full left-0 top-full shadow-2xl">
+    <a href="index.html#about" class="mobile-link block text-lg text-[var(--text-secondary)] hover:text-neon">Sobre Mí</a>
+    <a href="index.html#services" class="mobile-link block text-lg text-[var(--text-secondary)] hover:text-neon">Servicios</a>
+    <a href="portafolio.html" class="mobile-link block text-lg text-neon font-bold">Portafolio</a>
+    <a href="index.html#funnel" class="mobile-link block text-lg text-[var(--text-secondary)] hover:text-neon">Metodología</a>
+    <hr class="border-white/10">
+    <a href="index.html#contact" class="mobile-link block w-full text-center px-5 py-3 rounded-full neon-accent text-[var(--bg-primary)] font-bold">Agenda Sesión</a>
+  </div>
 </header>
 
-<!-- Hero Portafolio -->
-<section id="hero-portfolio" class="pt-40 pb-24 text-center reveal relative overflow-hidden">
+<section id="hero-portfolio" class="pt-40 pb-24 text-center reveal relative px-4">
   <div class="relative z-10">
-    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-[var(--text-primary)]">
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-[var(--text-primary)]">
       <span class="text-neon block">Portafolio Profesional</span>
       Proyectos que Transforman Marcas
     </h1>
-    <p class="text-lg max-w-3xl mx-auto text-[var(--text-secondary)] font-medium">
-      Estrategias digitales, branding y campañas de alto impacto para diferentes industrias.  
-      Cada proyecto refleja creatividad, estrategia y resultados medibles.
+    <p class="text-base md:text-lg max-w-3xl mx-auto text-[var(--text-secondary)] font-medium">
+      Estrategias digitales, branding y campañas de alto impacto. Cada proyecto refleja creatividad, estrategia y resultados medibles.
     </p>
   </div>
 </section>
 
-<!-- Grid de Proyectos -->
 <main class="container mx-auto px-6 py-16">
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-    
-    <!-- Proyecto 1 -->
-    <div class="card-style rounded-2xl overflow-hidden reveal">
-      <img src="SRC/social_media_ads.jpg" alt="Campaña Redes Sociales" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
+    <div class="card-style rounded-2xl overflow-hidden reveal border border-white/10">
+      <img src="SRC/social_media_ads.jpg" alt="Campaña Moda" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Campaña Social Ads – Moda</h3>
-        <p class="text-[var(--text-secondary)] mb-4 text-sm">
-          Estrategia de anuncios en Meta Ads con optimización de CPA y segmentación avanzada. +42% en conversiones.
-        </p>
-        <a href="proyecto1.html" class="text-neon font-semibold hover:underline">Ver Detalles →</a>
+        <p class="text-[var(--text-secondary)] mb-4 text-sm">Estrategia en Meta Ads con optimización de CPA. +42% en conversiones.</p>
+        <a href="#" class="text-neon font-semibold hover:underline">Ver Detalles →</a>
       </div>
     </div>
 
-    <!-- Proyecto 2 -->
-    <div class="card-style rounded-2xl overflow-hidden reveal">
-      <img src="SRC/pollocool.png" alt="Branding empresa" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
+    <div class="card-style rounded-2xl overflow-hidden reveal border border-white/10">
+      <img src="SRC/pollocool.png" alt="Rebranding" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
       <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Rebranding Completo – Startup</h3>
-        <p class="text-[var(--text-secondary)] mb-4 text-sm">
-          Creación de identidad visual moderna, nueva paleta de colores y diseño de logo para posicionamiento digital.
-        </p>
-        <a href="proyecto2.html" class="text-neon font-semibold hover:underline">Ver Proyecto →</a>
+        <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Rebranding Completo</h3>
+        <p class="text-[var(--text-secondary)] mb-4 text-sm">Identidad visual moderna y diseño de logo para posicionamiento digital.</p>
+        <a href="#" class="text-neon font-semibold hover:underline">Ver Proyecto →</a>
       </div>
     </div>
 
-    <!-- Proyecto 3 -->
-    <div class="card-style rounded-2xl overflow-hidden reveal">
+    <div class="card-style rounded-2xl overflow-hidden reveal border border-white/10">
       <img src="SRC/landing.jpg" alt="Landing Page" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
       <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Landing Page – Agencia Creativa</h3>
-        <p class="text-[var(--text-secondary)] mb-4 text-sm">
-          Diseño de landing enfocada en conversiones, con estrategia UX/UI y optimización post-clic.
-        </p>
-        <a href="proyecto3.html" class="text-neon font-semibold hover:underline">Ver proyecto →</a>
+        <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Landing Page Creativa</h3>
+        <p class="text-[var(--text-secondary)] mb-4 text-sm">Diseño enfocado en conversiones con estrategia UX/UI avanzada.</p>
+        <a href="#" class="text-neon font-semibold hover:underline">Ver proyecto →</a>
       </div>
     </div>
-
-    <!-- Proyecto 4 -->
-    <div class="card-style rounded-2xl overflow-hidden reveal">
-      <img src="SRC/proyecto4.jpg" alt="Funnel Automatizado" class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110">
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 text-[var(--text-primary)]">Embudo Automatizado – E-commerce</h3>
-        <p class="text-[var(--text-secondary)] mb-4 text-sm">
-          Funnel personalizado con automatización de correos y seguimiento en CRM. Incremento de ventas +35%.
-        </p>
-        <a href="proyecto4.html" class="text-neon font-semibold hover:underline">Ver Estrategia →</a>
-      </div>
-    </div>
-
   </div>
 
-  <div class="text-center mt-20">
-    <a href="index.html#contact" class="px-10 py-4 rounded-full neon-accent text-[var(--bg-primary)] font-bold text-lg cta-button">
-      ¿Quieres un proyecto así? Contáctame
+  <div class="text-center mt-24 px-4 cta-button-container">
+    <a href="index.html#contact" class="inline-block w-full max-w-xs md:max-w-md px-8 py-4 rounded-full neon-accent text-[var(--bg-primary)] font-bold text-base md:text-lg cta-button-responsive shadow-2xl transform transition hover:scale-105 active:scale-95">
+      ¿Quieres un proyecto así? <br class="sm:hidden"> Contáctame
     </a>
   </div>
 </main>
 
-<!-- Footer -->
-<footer class="bg-[var(--bg-footer)] border-t border-[var(--neon-color)]/20 mt-12">
-  <div class="container mx-auto px-6 py-8 text-center text-[var(--text-secondary)] text-sm">
-    © 2025 <span class="text-[var(--neon-color)] font-semibold">Jezrael Tovar</span> — Todos los derechos reservados.
+<footer class="bg-[var(--bg-footer)] border-t border-white/10 py-12 mt-12">
+  <div class="container mx-auto px-6 text-center text-[var(--text-secondary)] text-sm">
+    <p>© 2026 <span class="text-neon font-semibold">JT Agency</span> — Todos los derechos reservados.</p>
   </div>
 </footer>
 
+<script>
+  // Script para manejar el menú móvil y el tema en esta página
+  const menuBtn = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navIconPath = document.getElementById('nav-icon-path');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    navIconPath.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+  });
+
+  // Cerrar menú al clickear link
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      navIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    });
+  });
+
+  // Lógica de Reveal (Scroll)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 <script src="script.js"></script>
 </body>
 </html>
