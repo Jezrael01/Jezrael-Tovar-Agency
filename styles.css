@@ -1,182 +1,127 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-/* Definición de temas para Tailwind CSS */
+/* Definición de temas */
 :root {
-    /* Colores Base (Dark Mode por defecto) */
+    /* Colores Base (Dark Mode) */
     --bg-primary: #0d0d1e;
+    --bg-primary-rgb: 13, 13, 30; /* AÑADIDO PARA EL FROSTED GLASS */
     --text-primary: #e0e0f0;
+    --text-primary-rgb: 224, 224, 240;
     --text-secondary: #a0a0b0;
     --card-bg: rgba(18, 18, 30, 0.8);
-    --neon-color: #ff5722; /* Naranja/Cobre base */
-    --neon-accent-end: #ffa726; /* CORRECCIÓN: Fin del degradado para el botón (Ámbar/Naranja) */
-    --input-bg: rgba(30, 30, 45, 0.7); /* Fondo de input oscuro y semi-transparente */
-    --form-bg-opacity: 0.2; /* Opacidad para el fondo del formulario en dark mode */
-    --bg-footer: #0d0d1e; /* NUEVO: Fondo del footer en dark mode (oscuro sólido) */
+    --neon-color: #ff5722; 
+    --neon-accent-end: #ffa726; 
+    --input-bg: rgba(30, 30, 45, 0.7); 
+    --form-bg-opacity: 0.2; 
+    --bg-footer: #0d0d1e; 
+
+    /* Variables de Imágenes */
+    --hero-wave: url("SRC/Hero_principal.png");
 }
 
 .light {
     --bg-primary: #f0f0f5;
+    --bg-primary-rgb: 240, 240, 245; /* AÑADIDO PARA EL FROSTED GLASS */
     --text-primary: #1a1a2e;
+    --text-primary-rgb: 26, 26, 46;
     --text-secondary: #5a5a6e;
     --card-bg: #ffffff;
-    --neon-color: #007bff; /* Azul vibrante para light mode */
-    --neon-accent-end: #4092ff; /* CORRECCIÓN: Fin del degradado en Light Mode (Azul Claro Futurista) */
-    --input-bg: #e0e0e5; /* Fondo de input claro */
-    --form-bg-opacity: 0.8; /* Opacidad para el fondo del formulario en light mode */
-    --bg-footer: #0a1622;/* ¡CAMBIO CLAVE! Tono gris medio para el footer en modo claro */
+    --neon-color: #007bff; 
+    --neon-accent-end: #4092ff; 
+    --input-bg: #e0e0e5; 
+    --form-bg-opacity: 0.8; 
+    --bg-footer: #e0e0e8; /* CORREGIDO: Tono claro para el footer */
+    --hero-wave: url("SRC/hero_2.png");
+}
+
+/* --- Reset y Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Evita el movimiento lateral */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Estilos de la capa de gradiente neón para el fondo futurista */
-#neon-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.2; /* Menos opacidad */
+/* --- Hero Section (CORREGIDO) --- */
+#hero {
+    width: 100%; /* CAMBIADO de 100vw a 100% */
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilos de gradiente basados en la variable */
+#hero-background-wave {
+    position: absolute;
+    inset: 0; /* Cubre todo el padre */
+    background-image: var(--hero-wave);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* --- Clases de Estilo --- */
 .neon-accent {
-    background-color: var(--neon-color);
-    /* ¡CORREGIDO! Ahora usa la variable dinámica --neon-accent-end */
     background: linear-gradient(90deg, var(--neon-color), var(--neon-accent-end)); 
-    box-shadow: 0 0 10px rgba(255, 87, 34, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
 }
 
 .text-neon {
     color: var(--neon-color);
-    text-shadow: 0 0 3px rgba(255, 167, 38, 0.3);
 }
 
-/* Clase para el efecto de revelación */
+.card-style {
+    background-color: var(--card-bg); 
+    border: 1px solid rgba(var(--text-primary-rgb), 0.1);
+    transition: all 0.3s ease;
+}
+
+.card-style:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Frosted Glass Correcto */
+.frosted-card {
+    background-color: rgba(var(--bg-primary-rgb), var(--form-bg-opacity)); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
+    border: 1px solid rgba(var(--text-primary-rgb), 0.1); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.form-input {
+    background-color: var(--input-bg);
+    border: 1px solid rgba(var(--text-primary-rgb), 0.1);
+    color: var(--text-primary);
+    width: 100%;
+}
+
+/* Efecto Reveal */
 .reveal {
     opacity: 0;
-    transform: translateY(30px); /* Menos desplazamiento */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Estilo más sutil para las cards */
-.card-style {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
-    background-color: var(--card-bg); 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-style:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilo para la imagen "tipo card" */
-.profile-card {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Logo SVG para la navegación (Placeholder simple) */
-.logo-svg {
-    fill: var(--neon-color);
-    transition: fill 0.5s ease;
-}
-
-/* Estilo del CTA principal con reflejo (ajustado para ser más limpio) */
-.cta-button {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Estilo para el contenedor del formulario con efecto Frosted Glass */
-.frosted-card {
-    background-color: rgba(var(--bg-primary-rgb), var(--form-bg-opacity)); /* Usar rgb de bg-primary para transparencia */
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    border: 1px solid rgba(var(--text-primary-rgb), 0.1); /* Borde sutil */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.5s ease, border-color 0.5s ease;
-}
-
-/* Estilo para los inputs del formulario */
-.form-input {
-    background-color: var(--input-bg);
-    border: 1px solid rgba(var(--text-primary-rgb), 0.2);
-    color: var(--text-primary);
-    transition: background-color 0.5s ease, border-color 0.5s ease;
-}
-.form-input::placeholder {
-    color: var(--text-secondary);
-    opacity: 0.7;
-}
-/* --- Estilos para el Hero --- */
-#hero {
-    width: 100vw; /* Fuerza ocupar todo el ancho visible */
-    height: 80vh; /* Asegúrate de que ocupe toda la altura de la ventana */
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative;
-    overflow: hidden; /* Asegura que no haya scroll dentro del hero */
-}
-
-#hero-background-wave {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Asegura que cubra todo el ancho */
-    height: 100%; /* Asegura que cubra toda la altura */
-    opacity: 0.3; /* Ajusta la opacidad según sea necesario */
-    background-repeat: no-repeat;
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    z-index: 0;
-}
-
-
-/* Variables */
-:root {
-    --wave-line-color-dark: #ff5722;
-    --wave-line-color-light: #007bff;
-    --hero-wave-dark: url("SRC/Hero_principal.png");
-}
-
-.light {
-    --hero-wave-light: url("SRC/hero_2.png");
-}
-
-/* Aplicar fondo según modo */
-#hero-background-wave {
-    background-image: var(--hero-wave-dark);
-}
-
-.light #hero-background-wave {
-    background-image: var(--hero-wave-light);
-}
-
-/* --- Corrección global opcional --- */
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* evita que aparezca scroll horizontal */
-}
-#hero {
-    overflow: hidden; /* asegura que no haya scroll dentro del hero */
 }
